@@ -202,7 +202,7 @@ module.exports = {
     "prefer-spread": 1,
     "prefer-template": 1,
     "quote-props": [1, "as-needed", { keywords: false, numbers: true }],
-    "quotes": [1, "double", { avoidEscape: true, allowTemplateLiterals: true }],
+    "quotes": [1, "single", { avoidEscape: true, allowTemplateLiterals: true }],
     "radix": [2, "always"],
     "require-await": 1,
     "require-jsdoc": 0,

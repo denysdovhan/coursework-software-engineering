@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow } from 'electron';
 
 const PORT = 3000;
 
@@ -11,32 +11,32 @@ function createWindow() {
     height: 600
   });
 
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line node/no-unpublished-require
-    require("electron-debug")();
+    require('electron-debug')();
     win.loadURL(`http://localhost:${PORT}/build/index.html`);
   } else {
     win.loadURL(`file://${__dirname}/index.html`);
   }
 
-  win.webContents.on("did-finish-load", () => {
+  win.webContents.on('did-finish-load', () => {
     win.show();
     win.focus();
   });
 
-  win.on("closed", () => {
+  win.on('closed', () => {
     win = null;
   });
 }
 
-app.on("ready", async () => {
-  if (process.env.NODE_ENV === "development") {
+app.on('ready', async () => {
+  if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line node/no-unpublished-require
-    const installer = require("electron-devtools-installer");
+    const installer = require('electron-devtools-installer');
     const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
     const extensions = [
-      "REACT_DEVELOPER_TOOLS",
-      "REDUX_DEVTOOLS"
+      'REACT_DEVELOPER_TOOLS',
+      'REDUX_DEVTOOLS'
     ];
     await Promise.all(
       extensions.map(e => installer.default(installer[e], forceDownload))
@@ -45,13 +45,13 @@ app.on("ready", async () => {
   createWindow();
 });
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-app.on("activate", () => {
+app.on('activate', () => {
   if (win === null) {
     createWindow();
   }

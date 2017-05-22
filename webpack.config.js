@@ -1,32 +1,32 @@
-"use strict";
+'use strict';
 
-const path = require("path");
-const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const BabiliPlugin = require("babili-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
 
 const PORT = 3000;
 
-const extractCSS = new ExtractTextPlugin("style.css");
+const extractCSS = new ExtractTextPlugin('style.css');
 
 module.exports = ({ platform, prod } = {}) => {
-  const electronMain = platform === "electron";
+  const electronMain = platform === 'electron';
   const electronRenderer = !electronMain;
 
   const cssLoaders = [
     {
-      loader: "css-loader",
+      loader: 'css-loader',
       options: {
         camelCase: true,
         importLoaders: 1,
-        localIdentName: "[local]_[hash:base64:5]",
+        localIdentName: '[local]_[hash:base64:5]',
         modules: true,
         sourceMap: !prod
       }
     },
-    "postcss-loader"
+    'postcss-loader'
   ];
 
   return {
@@ -34,36 +34,36 @@ module.exports = ({ platform, prod } = {}) => {
       hot: true,
       port: PORT
     },
-    devtool: prod ? undefined : "inline-source-map",
+    devtool: prod ? undefined : 'inline-source-map',
     entry: electronMain ? [
-      "./app/main"
+      './app/main'
     ] : [
       ...!prod ? [
-        "react-hot-loader/patch",
+        'react-hot-loader/patch',
         `webpack-dev-server/client?http://localhost:${PORT}`,
-        "webpack/hot/only-dev-server",
+        'webpack/hot/only-dev-server',
       ] : [],
-      "./app/renderer"
+      './app/renderer'
     ],
     externals: electronMain && !prod ? [
-      "source-map-support"
+      'source-map-support'
     ] : [],
     module: {
       rules: [
         {
           test: /\.js($|\?)/,
           use: [
-            ...electronRenderer && !prod ? ["react-hot-loader/webpack"] : [],
-            "babel-loader"
+            ...electronRenderer && !prod ? ['react-hot-loader/webpack'] : [],
+            'babel-loader'
           ],
           exclude: /node_modules/
         },
         {
           test: /\.css($|\?)/,
           use: prod ? extractCSS.extract({
-            fallback: "style-loader",
+            fallback: 'style-loader',
             use: cssLoaders
-          }) : ["style-loader", ...cssLoaders],
+          }) : ['style-loader', ...cssLoaders],
           exclude: /node_modules/
         },
         {
@@ -77,14 +77,14 @@ module.exports = ({ platform, prod } = {}) => {
       __filename: false
     } : {},
     output: {
-      filename: electronMain ? "index.js" : "bundle.js",
-      libraryTarget: "commonjs2",
-      path: path.resolve(__dirname, "build"),
+      filename: electronMain ? 'index.js' : 'bundle.js',
+      libraryTarget: 'commonjs2',
+      path: path.resolve(__dirname, 'build'),
       publicPath: electronRenderer && !prod ? `http://localhost:${PORT}/build/` : undefined
     },
     plugins: [
       new webpack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify(prod ? "production" : "development")
+        'process.env.NODE_ENV': JSON.stringify(prod ? 'production' : 'development')
       }),
       ...electronRenderer ? [
         ...prod ? [
@@ -93,10 +93,10 @@ module.exports = ({ platform, prod } = {}) => {
           new webpack.HotModuleReplacementPlugin(),
         ],
         new HtmlPlugin({
-          template: "app/renderer/index.html"
+          template: 'app/renderer/index.html'
         }),
         new CopyPlugin([
-          { from: "resources", to: "resources", ignore: [".gitkeep"] }
+          { from: 'resources', to: 'resources', ignore: ['.gitkeep'] }
         ])
       ] : [
         ...prod ? [] : [
@@ -114,7 +114,7 @@ module.exports = ({ platform, prod } = {}) => {
         new webpack.NoEmitOnErrorsPlugin()
       ]
     ],
-    target: electronMain ? "electron-main" : "electron-renderer"
+    target: electronMain ? 'electron-main' : 'electron-renderer'
   };
 
 };
