@@ -15,6 +15,7 @@ function createWindow() {
     // eslint-disable-next-line node/no-unpublished-require
     require('electron-debug')();
     win.loadURL(`http://localhost:${PORT}/build/index.html`);
+    win.webContents.openDevTools();
   } else {
     win.loadURL(`file://${__dirname}/index.html`);
   }
