@@ -19,6 +19,10 @@ module.exports = {
     "node/no-unpublished-require": [2, {
       "allowModules": ["electron"]
     }],
+    "node/no-missing-import": ["error", {
+      "allowModules": [],
+      "tryExtensions": [".js", ".json", ".jsx"]
+    }],
     "node/no-unsupported-features": 0,
     "react/display-name": 1,
     "react/forbid-component-props": 0,

@@ -48,10 +48,13 @@ module.exports = ({ platform, prod } = {}) => {
     externals: electronMain && !prod ? [
       'source-map-support'
     ] : [],
+    resolve: {
+      extensions: ['.js', '.json', '.jsx']
+    },
     module: {
       rules: [
         {
-          test: /\.js($|\?)/,
+          test: /\.jsx?$/,
           use: [
             ...electronRenderer && !prod ? ['react-hot-loader/webpack'] : [],
             'babel-loader'
