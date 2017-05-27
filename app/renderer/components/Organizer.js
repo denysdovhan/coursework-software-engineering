@@ -5,6 +5,7 @@ import VisibleEventList from '../containers/VisibleEventList';
 
 const styles = {
   maxWidth: '600px',
+  width: '90%',
   margin: '1rem auto'
 };
 
