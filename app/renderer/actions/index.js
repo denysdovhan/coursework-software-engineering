@@ -1,3 +1,5 @@
+import { v4 } from 'node-uuid';
+
 /**
  * actions
  */
@@ -18,11 +20,10 @@ export const VisibilityFilters = {
  * action creators
  */
 
-let nextTodoId = 0;
-export function addTask(text) {
+export function addEvent(text) {
   return {
-    type: ADD_TASK,
-    id: nextTodoId++,
+    type: ADD_EVENT,
+    id: v4(),
     text
   };
 }

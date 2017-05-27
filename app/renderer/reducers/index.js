@@ -19,11 +19,10 @@ function tasks(state = [], action) {
         id: action.id,
         text: action.text,
         completed: false
-      }];
-    case TOGGLE_TASK:
-      console.log(action)
-      return state.map((todo, id) =>
-        id === action.id ? { ...todo, completed: !todo.completed } : todo
+      }, ...state];
+    case TOGGLE_EVENT:
+      return state.map(event =>
+        event.id === action.id ? { ...event, completed: !event.completed } : event
       );
     default:
       return state;
