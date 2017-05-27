@@ -9,7 +9,8 @@ module.exports = {
   },
   plugins: ["babel", "react", "compat"],
   rules: {
-    "babel/no-invalid-this": 2,
+    "no-invalid-this": 0,
+    "babel/no-invalid-this": 0,
     "babel/new-cap": 2,
     "babel/object-curly-spacing": [1, "always"],
     "compat/compat": 2,
@@ -59,7 +60,7 @@ module.exports = {
     "react/jsx-closing-bracket-location": [1, "after-props"],
     "react/jsx-curly-spacing": [1, "never"],
     "react/jsx-equals-spacing": [1, "never"],
-    "react/jsx-handler-names": 1,
+    "react/jsx-handler-names": 0,
     "react/jsx-indent-props": [1, 2],
     "react/jsx-indent": [1, 2],
     "react/jsx-key": 2,
