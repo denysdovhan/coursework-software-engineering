@@ -1,25 +1,28 @@
 import { combineReducers } from 'redux';
 import {
-  ADD_TASK,
-  TOGGLE_TASK,
+  ADD_EVENT,
+  TOGGLE_EVENT,
+  REMOVE_EVENT,
   SET_VISIBILITY_FILTER,
   VisibilityFilters
 } from '../actions';
 
 /**
- * Tasks reducer
- * @param {object[]} state Array of tasks
+ * Events reducer
+ * @param {object[]} state Array of events
  * @param {object} action A Redux action
  * @return {array}
  */
-function tasks(state = [], action) {
+function events(state = [], action) {
   switch (action.type) {
-    case ADD_TASK:
-      return [...state, {
+    case ADD_EVENT:
+      return [{
         id: action.id,
         text: action.text,
         completed: false
       }, ...state];
+    case REMOVE_EVENT:
+      return state.filter(event => event.id !== action.id);
     case TOGGLE_EVENT:
       return state.map(event =>
         event.id === action.id ? { ...event, completed: !event.completed } : event
@@ -48,7 +51,7 @@ function visibilityFilter(state = VisibilityFilters.SHOW_ALL, action) {
  */
 const rootReducer = combineReducers({
   visibilityFilter,
-  tasks
+  events
 });
 
 export default rootReducer;

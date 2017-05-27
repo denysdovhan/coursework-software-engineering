@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addTask } from '../actions';
+import { addEvent } from '../actions';
 
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
+import DatePicker from 'material-ui/DatePicker';
+import AddIcon from 'material-ui/svg-icons/content/add';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class AddTask extends React.Component {
+const styles = {
+  Paper: {
+
+  }
+};
+
+class NewEvent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,29 +44,33 @@ class AddTask extends React.Component {
     if (!this.state.inputValue.trim()) {
       return;
     }
-    this.props.dispatch(addTask(this.state.inputValue));
+    this.props.dispatch(addEvent(this.state.inputValue));
     this.setState({ inputValue: '' });
   }
 
   render() {
     return (
-      <Paper>
+      <Paper style={{
+        padding: '2px 8px',
+        margin: '0.5rem 0'
+      }}>
         <form onSubmit={this.handleOnSubmit}>
           <TextField
             onChange={this.handleOnChange}
-            hintText="Your task..."
+            hintText="Describe your event..."
             value={this.state.inputValue} />
           <RaisedButton
+            primary
             type="submit"
-            label="Add Task" />
+            icon={<AddIcon color="white"/>} />
         </form>
       </Paper>
     );
   }
 }
 
-AddTask.propTypes = {
+NewEvent.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(AddTask);
+export default connect()(NewEvent);

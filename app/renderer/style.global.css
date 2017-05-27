@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('/resources/Roboto/Roboto-Regular.ttf') format('ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/resources/Roboto/Roboto-Medium.ttf') format('ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/resources/Roboto/Roboto-Light.ttf') format('ttf');
+  font-weight: 300;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e8e8e8;
+}

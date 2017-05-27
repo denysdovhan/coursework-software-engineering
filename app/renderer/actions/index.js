@@ -3,8 +3,9 @@ import { v4 } from 'node-uuid';
 /**
  * actions
  */
-export const ADD_TASK = 'ADD_TASK';
-export const TOGGLE_TASK = 'TOGGLE_TASK';
+export const ADD_EVENT = 'ADD_EVENT';
+export const TOGGLE_EVENT = 'TOGGLE_EVENT';
+export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 /**
@@ -28,9 +29,16 @@ export function addEvent(text) {
   };
 }
 
-export function toggleTask(id) {
+export function toggleEvent(id) {
   return {
-    type: TOGGLE_TASK,
+    type: TOGGLE_EVENT,
+    id
+  };
+}
+
+export function removeEvent(id) {
+  return {
+    type: REMOVE_EVENT,
     id
   };
 }

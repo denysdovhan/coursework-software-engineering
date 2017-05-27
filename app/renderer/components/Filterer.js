@@ -4,7 +4,7 @@ import FilterLink from '../containers/FilterLink';
 
 const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } = VisibilityFilters;
 
-const Header = () => (
+const Filterer = () => (
   <p>
     Show:
     <FilterLink filter={SHOW_ALL}>All</FilterLink>
@@ -15,6 +15,6 @@ const Header = () => (
   </p>
 );
 
-Header.propTypes = {};
+Filterer.propTypes = {};
 
-export default Header;
+export default Filterer;
