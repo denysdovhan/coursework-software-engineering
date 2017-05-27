@@ -5,15 +5,8 @@ import { addEvent } from '../actions';
 
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import RaisedButton from 'material-ui/RaisedButton';
-
-const styles = {
-  Paper: {
-
-  }
-};
 
 class NewEvent extends React.Component {
   constructor(props) {

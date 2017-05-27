@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import {
   ADD_EVENT,
+  UPDATE_EVENT,
   TOGGLE_EVENT,
   REMOVE_EVENT,
   SET_VISIBILITY_FILTER,
@@ -21,6 +22,10 @@ function events(state = [], action) {
         text: action.text,
         completed: false
       }, ...state];
+    case UPDATE_EVENT:
+      return state.map(event =>
+        event.id === action.id ? { ...event, ...action.updated } : event
+      );
     case REMOVE_EVENT:
       return state.filter(event => event.id !== action.id);
     case TOGGLE_EVENT:

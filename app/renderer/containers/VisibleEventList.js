@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
   toggleEvent,
+  updateEvent,
   removeEvent,
   VisibilityFilters
 } from '../actions';
@@ -35,6 +36,9 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleEventClick: id => {
       dispatch(toggleEvent(id));
+    },
+    updateEventClick: (id, updated) => {
+      dispatch(updateEvent(id, updated));
     },
     removeEventClick: id => {
       dispatch(removeEvent(id));

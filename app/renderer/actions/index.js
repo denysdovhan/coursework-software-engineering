@@ -5,6 +5,7 @@ import { v4 } from 'node-uuid';
  */
 export const ADD_EVENT = 'ADD_EVENT';
 export const TOGGLE_EVENT = 'TOGGLE_EVENT';
+export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
@@ -33,6 +34,14 @@ export function toggleEvent(id) {
   return {
     type: TOGGLE_EVENT,
     id
+  };
+}
+
+export function updateEvent(id, updated) {
+  return {
+    type: UPDATE_EVENT,
+    id,
+    updated
   };
 }
 
