@@ -1,5 +1,5 @@
 import React from 'react';
-import Filterer from './Filterer';
+import Filterer from '../containers/Filterer';
 import NewEvent from '../containers/NewEvent';
 import VisibleEventList from '../containers/VisibleEventList';
 
