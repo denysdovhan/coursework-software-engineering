@@ -18,9 +18,8 @@ function events(state = [], action) {
   switch (action.type) {
     case ADD_EVENT:
       return [{
-        id: action.id,
-        text: action.text,
-        completed: false
+        ...action.data,
+        completed: false,
       }, ...state];
     case UPDATE_EVENT:
       return state.map(event =>

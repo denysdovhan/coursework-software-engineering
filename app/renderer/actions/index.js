@@ -22,11 +22,16 @@ export const VisibilityFilters = {
  * action creators
  */
 
-export function addEvent(text) {
+export function addEvent({ name, description, startDate, finishDate }) {
   return {
     type: ADD_EVENT,
-    id: v4(),
-    text
+    data: {
+      id: v4(),
+      name,
+      description,
+      startDate,
+      finishDate,
+    }
   };
 }
 

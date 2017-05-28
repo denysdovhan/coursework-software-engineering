@@ -21,7 +21,10 @@ EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    startDate: PropTypes.object,
+    finishDate: PropTypes.object,
+    description: PropTypes.string,
   })).isRequired,
   removeEventClick: PropTypes.func.isRequired,
   toggleEventClick: PropTypes.func.isRequired,
