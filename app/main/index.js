@@ -7,8 +7,10 @@ let win;
 function createWindow() {
   win = new BrowserWindow({
     show: false,
-    width: 800,
-    height: 600
+    width: 650,
+    height: 600,
+    minWidth: 650,
+    minHeight: 500,
   });
 
   if (process.env.NODE_ENV === 'development') {
