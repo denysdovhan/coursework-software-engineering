@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { grey500 } from 'material-ui/styles/colors';
+import BackgroundMessage from './BackgroundMessage';
 import Event from './Event';
 
 const EventList = ({ events, toggleEventClick, updateEventClick, removeEventClick }) => {
@@ -14,13 +14,9 @@ const EventList = ({ events, toggleEventClick, updateEventClick, removeEventClic
           removeEvent={() => removeEventClick(event.id)}
           updateEvent={updated => updateEventClick(event.id, updated)} />
       )) : (
-        <h1 style={{
-          textAlign: 'center',
-          marginTop: '1rem',
-          color: grey500,
-        }}>
-          There is no events…
-        </h1>
+        <BackgroundMessage label="There is no events…">
+          Try to create some or change visibility option.
+        </BackgroundMessage>
       )}
     </ul>
   );

@@ -52,7 +52,7 @@ class EventEditorDialog extends React.Component {
 
   render() {
     return (
-      <Dialog modal={false} {...this.props}>
+      <Dialog autoScrollBodyContent modal={false} {...this.props}>
         <TextField
           fullWidth
           autoFocus

@@ -4,9 +4,14 @@ import {
   UPDATE_EVENT,
   TOGGLE_EVENT,
   REMOVE_EVENT,
+  FETCH_COMPANIES_REQUEST,
+  FETCH_COMPANIES_SUCCESS,
+  FETCH_COMPANIES_FAILURE,
   SET_VISIBILITY_FILTER,
   VisibilityFilters
 } from '../actions';
+
+// @todo: make state more database-like
 
 /**
  * Events reducer
@@ -36,6 +41,27 @@ function events(state = [], action) {
   }
 }
 
+function companies(state = [], action) {
+  switch (action.type) {
+    case FETCH_COMPANIES_SUCCESS:
+      return action.companies;
+    default:
+      return state;
+  }
+}
+
+function isFetching(state = false, action) {
+  switch (action.type) {
+    case FETCH_COMPANIES_REQUEST:
+      return true;
+    case FETCH_COMPANIES_SUCCESS:
+    case FETCH_COMPANIES_FAILURE:
+      return false;
+    default:
+      return state;
+  }
+}
+
 /**
  * Visibility filter reducer
  * @param {string} state visibility filter
@@ -55,7 +81,9 @@ function visibilityFilter(state = VisibilityFilters.SHOW_ALL, action) {
  */
 const rootReducer = combineReducers({
   visibilityFilter,
-  events
+  events,
+  companies,
+  isFetching,
 });
 
 export default rootReducer;

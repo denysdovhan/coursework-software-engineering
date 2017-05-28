@@ -26,9 +26,11 @@ const getVisibleEvents = (events, filter) => {
   }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, { filter }) => {
   return {
-    events: getVisibleEvents(state.events, state.visibilityFilter),
+    events: filter ?
+      state.events.filter(filter) :
+      getVisibleEvents(state.events, state.visibilityFilter),
   };
 };
 

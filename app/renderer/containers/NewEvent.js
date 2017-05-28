@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addEvent } from '../actions';
 
-import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ExpandIcon from 'material-ui/svg-icons/navigation/expand-more';
-import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import PrimaryTextField from '../components/PrimaryTextField';
 import EventEditorDialog from '../components/EventEditorDialog';
 
 // @todo: split to presentational component and container
@@ -88,31 +86,17 @@ class NewEvent extends React.Component {
 
   render() {
     return (
-      <Paper style={{
-        padding: '2px 8px',
-        margin: '0.5rem 0'
-      }}>
-        <form onSubmit={this.handleOnSubmit}>
-          <TextField
-            onChange={this.handleNameChange}
-            hintText="Describe your event..."
-            style={{ width: '60%' }}
-            value={this.state.nameInputValue} />
-          <RaisedButton
-            label="Expand"
-            style={{
-              width: '20%',
-              margin: '0 1%'
-            }}
-            onClick={this.handleExpandOpen}
-            icon={<ExpandIcon />} />
-          <RaisedButton
-            primary
-            type="submit"
-            label="Add"
-            style={{ width: '18%' }}
-            icon={<AddIcon color="white" />} />
-        </form>
+      <div>
+        <PrimaryTextField
+          value={this.state.nameInputValue}
+          hintText="Describe your event..."
+          onSubmit={this.handleOnSubmit}
+          onChange={this.handleNameChange}
+          secondaryLabel="Expand"
+          primaryLabel="Add"
+          secondaryIcon={<ExpandIcon />}
+          primaryIcon={<AddIcon color="white" />}
+          onSecodaryClick={this.handleExpandOpen} />
         <EventEditorDialog
           open={this.state.showExpandDialog}
           onRequestClose={this.handleExpandClose}
@@ -128,9 +112,9 @@ class NewEvent extends React.Component {
           actions={[
             /* eslint react/jsx-key: 0 */
             <FlatButton label="Dismiss" onClick={this.handleExpandClose} />,
-            <FlatButton primary label="Add" onClick={this.handleOnSubmit}/>
+            <FlatButton primary label="Add" onClick={this.handleOnSubmit} />
           ]} />
-      </Paper>
+      </div>
     );
   }
 }
