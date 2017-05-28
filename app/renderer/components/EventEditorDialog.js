@@ -19,7 +19,7 @@ class EventEditorDialog extends React.Component {
     name: PropTypes.string.isRequired,
     onDescriptionChange: PropTypes.func.isRequired,
     onFinishDateChange: PropTypes.func.isRequired,
-    onNameChange: PropTypes.func.isRequired.isRequired,
+    onNameChange: PropTypes.func.isRequired,
     onStartDateChange: PropTypes.func.isRequired,
     startDate: PropTypes.object,
   }
