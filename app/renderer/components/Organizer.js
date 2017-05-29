@@ -9,14 +9,12 @@ const styles = {
   margin: '1rem auto'
 };
 
-const Organizer = () => {
-  return (
-    <div style={styles}>
-      <NewEvent />
-      <Filterer />
-      <VisibleEventList />
-    </div>
-  );
-};
+const Organizer = () => (
+  <div style={styles}>
+    <NewEvent />
+    <Filterer />
+    <VisibleEventList />
+  </div>
+);
 
 export default Organizer;

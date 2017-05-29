@@ -122,7 +122,8 @@ class Event extends React.Component {
             subtitle={this.formatedDuration(this.props.startDate, this.props.finishDate)}
             subtitleStyle={{ textDecoration: this.props.completed ? 'line-through' : 'none' }}
             actAsExpander={Boolean(this.props.description)}
-            showExpandableButton={Boolean(this.props.description)} />
+            showExpandableButton={Boolean(this.props.description)}
+          />
           {Boolean(this.props.description) && (
             <CardText expandable style={{ textDecoration: this.props.completed ? 'line-through' : 'none' }}>
               {this.props.description}
@@ -133,15 +134,18 @@ class Event extends React.Component {
               primary
               onClick={this.props.toggleEvent}
               label={this.props.completed ? 'Mark as Undone' : 'Mark as Done'}
-              icon={this.props.completed ? <CheckedIcon /> : <UncheckedIcon />} />
+              icon={this.props.completed ? <CheckedIcon /> : <UncheckedIcon />}
+            />
             <FlatButton
               label="Edit"
               onClick={this.handleEditingOpen}
-              icon={<EditIcon />} />
+              icon={<EditIcon />}
+            />
             <FlatButton
               label="Remove"
               onClick={this.props.removeEvent}
-              icon={<DeleteIcon />} />
+              icon={<DeleteIcon />}
+            />
           </CardActions>
         </Card>
 
@@ -161,7 +165,8 @@ class Event extends React.Component {
             /* eslint react/jsx-key: 0 */
             <FlatButton label="Dismiss" onClick={this.handleEditingClose} />,
             <FlatButton primary label="Save" onClick={this.handleEditingSave} />
-          ]} />
+          ]}
+        />
 
       </li>
     );

@@ -40,7 +40,7 @@ class Search extends React.Component {
     this.props.fetchCompanies(this.state.searchQuery);
   }
 
-  handleSearchOptionsOpen = (e) => {
+  handleSearchOptionsOpen = e => {
     // This prevents ghost click.
     e.preventDefault();
 
@@ -69,7 +69,7 @@ class Search extends React.Component {
     });
   }
 
-  handleOnSubmit = (e) => {
+  handleOnSubmit = e => {
     e.preventDefault();
     if (!this.state.searchQuery.trim()) return;
     this.props.fetchCompanies(this.state.searchQuery);

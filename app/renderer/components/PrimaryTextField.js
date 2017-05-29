@@ -6,6 +6,10 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
+  paper: {
+    padding: '2px 8px',
+    margin: '0.5rem 0',
+  },
   input: {
     width: '67%',
     fontSize: '1.1rem',
@@ -28,26 +32,26 @@ const PrimaryTextFiled = ({
   onSecodaryClick,
   primaryIcon,
 }) => (
-  <Paper style={{
-    padding: '2px 8px',
-    margin: '0.5rem 0'
-  }}>
+  <Paper style={styles.paper}>
     <form onSubmit={onSubmit}>
       <TextField
         underlineShow={false}
         onChange={onChange}
         hintText={hintText}
         style={styles.input}
-        value={value} />
+        value={value}
+      />
       <RaisedButton
         style={styles.secondary}
         onClick={onSecodaryClick}
-        icon={secondaryIcon} />
+        icon={secondaryIcon}
+      />
       <RaisedButton
         primary
         type="submit"
         style={styles.primary}
-        icon={primaryIcon} />
+        icon={primaryIcon}
+      />
     </form>
   </Paper>
 );

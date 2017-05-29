@@ -22,11 +22,11 @@ Filterer.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   value: state.visibilityFilter
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onChange: (event, index, value) => dispatch(setVisibilityFilter(value)),
 });
 

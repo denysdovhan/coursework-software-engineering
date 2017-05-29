@@ -8,7 +8,7 @@ import DatePicker from 'material-ui/DatePicker';
 const styles = {
   datepicker: {
     display: 'inline-block',
-    width: '50%'
+    width: '45%',
   }
 };
 
@@ -59,26 +59,30 @@ class EventEditorDialog extends React.Component {
           hintText="Describe your event..."
           floatingLabelText="Event name:"
           value={this.props.name}
-          onChange={this.props.onNameChange} />
+          onChange={this.props.onNameChange}
+        />
         <DatePicker
           floatingLabelText="Start date:"
           style={styles.datepicker}
           minDate={this.state.minStartDate}
           value={this.props.startDate}
-          onChange={this.handleStartDateChange}/>
+          onChange={this.handleStartDateChange}
+        />
         <DatePicker
           floatingLabelText="Finish time:"
           style={styles.datepicker}
           minDate={this.state.minFinishDate}
           value={this.props.finishDate}
-          onChange={this.handleFinishDateChange} />
+          onChange={this.handleFinishDateChange}
+        />
         <TextField
           fullWidth
           hintText="More information about event..."
           floatingLabelText="Event description:"
           value={this.props.description}
           onChange={this.handleDescriptionChange}
-          rows={2} />
+          rows={2}
+        />
       </Dialog>
     );
   }

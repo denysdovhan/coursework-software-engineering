@@ -57,7 +57,7 @@ module.exports = {
     "react/sort-prop-types": 1,
     "react/style-prop-object": 2,
     "react/jsx-boolean-value": [1, "never"],
-    "react/jsx-closing-bracket-location": [1, "after-props"],
+    "react/jsx-closing-bracket-location": [1, "tag-aligned"],
     "react/jsx-curly-spacing": [1, "never"],
     "react/jsx-equals-spacing": [1, "never"],
     "react/jsx-handler-names": 0,

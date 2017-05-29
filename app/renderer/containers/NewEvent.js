@@ -96,7 +96,8 @@ class NewEvent extends React.Component {
           primaryLabel="Add"
           secondaryIcon={<ExpandIcon />}
           primaryIcon={<AddIcon color="white" />}
-          onSecodaryClick={this.handleExpandOpen} />
+          onSecodaryClick={this.handleExpandOpen}
+        />
         <EventEditorDialog
           open={this.state.showExpandDialog}
           onRequestClose={this.handleExpandClose}
@@ -113,7 +114,8 @@ class NewEvent extends React.Component {
             /* eslint react/jsx-key: 0 */
             <FlatButton label="Dismiss" onClick={this.handleExpandClose} />,
             <FlatButton primary label="Add" onClick={this.handleOnSubmit} />
-          ]} />
+          ]}
+        />
       </div>
     );
   }
