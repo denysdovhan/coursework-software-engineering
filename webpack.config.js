@@ -32,7 +32,10 @@ module.exports = ({ platform, prod } = {}) => {
   return {
     devServer: {
       hot: true,
-      port: PORT
+      port: PORT,
+      historyApiFallback: {
+        index: '/build/'
+      }
     },
     devtool: prod ? undefined : 'inline-source-map',
     entry: electronMain ? [
