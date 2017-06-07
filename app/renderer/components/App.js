@@ -6,6 +6,9 @@ import {
 } from 'react-router-dom';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { ActionList, ActionSearch } from 'material-ui/svg-icons';
+
+import Login from './Login';
+import SignUp from './SignUp';
 import Organizer from './Organizer';
 import Search from './Search';
 
