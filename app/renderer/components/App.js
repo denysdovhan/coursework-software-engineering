@@ -20,7 +20,7 @@ const App = () => (
       <PrivateRoute path="/search" component={Search} />
       <PublicRoute path="/login" component={LoginForm} />
       <PublicRoute path="/signup" component={SignUpForm} />
-      <Route path="/build/index.html" render={() => (<Redirect to="/login" />)} />
+      <Route path="/*" render={() => (<Redirect to="/login" />)} />
       <ErrorSnackbar />
     </div>
   </Router>
