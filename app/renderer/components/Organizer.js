@@ -2,6 +2,7 @@ import React from 'react';
 import Filterer from '../containers/Filterer';
 import NewEvent from '../containers/NewEvent';
 import VisibleEventList from '../containers/VisibleEventList';
+import AppHeader from './AppHeader';
 
 const styles = {
   maxWidth: '600px',
@@ -10,10 +11,13 @@ const styles = {
 };
 
 const Organizer = () => (
-  <div style={styles}>
-    <NewEvent />
-    <Filterer />
-    <VisibleEventList />
+  <div>
+    <AppHeader title="Organizer" />
+    <div style={styles}>
+      <NewEvent />
+      <Filterer />
+      <VisibleEventList />
+    </div>
   </div>
 );
 

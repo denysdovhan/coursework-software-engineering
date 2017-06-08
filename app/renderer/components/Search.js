@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchCompanies } from '../actions';
 
+import AppHeader from './AppHeader';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -79,39 +80,42 @@ class Search extends React.Component {
     const hintText = `Search ${isSearchingFor}…`;
 
     return (
-      <div style={styles}>
-        <PrimaryTextField
-          value={searchQuery}
-          hintText={hintText}
-          onSubmit={this.handleOnSubmit}
-          onChange={this.handleOnChange}
-          secondaryLabel="Expand"
-          primaryLabel="Add"
-          secondaryIcon={<ExpandIcon />}
-          primaryIcon={<SearchIcon color="white" />}
-          onSecodaryClick={this.handleSearchOptionsOpen}
-        />
-        <Popover
-          open={showSearchOptions}
-          anchorEl={popoverAnchorEl}
-          onRequestClose={this.handleSearchOptionsClose}
-        >
-          <Menu onChange={this.handleSearchOptionsChange}>
-            <MenuItem value="companies" disabled={isSearchingFor === 'companies'} leftIcon={<CompaniesIcon />}>
-              Companies
-            </MenuItem>
-            <MenuItem value="events" disabled={isSearchingFor === 'events'} leftIcon={<EventIcon />}>
-              Events
-            </MenuItem>
-          </Menu>
-        </Popover>
-        {this.props.isFetching ? (
-          <BackgroundMessage loading label="Loading…">
-            It usually takes some time to fetch data from servers.
-          </BackgroundMessage>
-        ) : (
-          <SearchResults searchFor={isSearchingFor} query={searchQuery} />
-        )}
+      <div>
+        <AppHeader title="Search" />
+        <div style={styles}>
+          <PrimaryTextField
+            value={searchQuery}
+            hintText={hintText}
+            onSubmit={this.handleOnSubmit}
+            onChange={this.handleOnChange}
+            secondaryLabel="Expand"
+            primaryLabel="Add"
+            secondaryIcon={<ExpandIcon />}
+            primaryIcon={<SearchIcon color="white" />}
+            onSecodaryClick={this.handleSearchOptionsOpen}
+          />
+          <Popover
+            open={showSearchOptions}
+            anchorEl={popoverAnchorEl}
+            onRequestClose={this.handleSearchOptionsClose}
+          >
+            <Menu onChange={this.handleSearchOptionsChange}>
+              <MenuItem value="companies" disabled={isSearchingFor === 'companies'} leftIcon={<CompaniesIcon />}>
+                Companies
+              </MenuItem>
+              <MenuItem value="events" disabled={isSearchingFor === 'events'} leftIcon={<EventIcon />}>
+                Events
+              </MenuItem>
+            </Menu>
+          </Popover>
+          {this.props.isFetching ? (
+            <BackgroundMessage loading label="Loading…">
+              It usually takes some time to fetch data from servers.
+            </BackgroundMessage>
+          ) : (
+            <SearchResults searchFor={isSearchingFor} query={searchQuery} />
+          )}
+        </div>
       </div>
     );
   }

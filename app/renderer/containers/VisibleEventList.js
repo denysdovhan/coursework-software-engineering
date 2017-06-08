@@ -3,34 +3,19 @@ import {
   toggleEvent,
   updateEvent,
   removeEvent,
-  VisibilityFilters
 } from '../actions';
 import EventList from '../components/EventList';
-
-const {
-  SHOW_ALL,
-  SHOW_ACTIVE,
-  SHOW_COMPLETED,
-} = VisibilityFilters;
-
-const getVisibleEvents = (events, filter) => {
-  switch (filter) {
-    case SHOW_ALL:
-      return events;
-    case SHOW_ACTIVE:
-      return events.filter(event => !event.completed);
-    case SHOW_COMPLETED:
-      return events.filter(event => event.completed);
-    default:
-      return events;
-  }
-};
+import { getEventsByUserId, getActiveUserId } from '../reducers';
+import { getEventsByFilter } from '../reducers/events';
 
 const mapStateToProps = (state, { filter }) => {
   return {
     events: filter ?
-      state.events.filter(filter) :
-      getVisibleEvents(state.events, state.visibilityFilter),
+      getEventsByUserId(state, getActiveUserId(state)).filter(filter) :
+      getEventsByFilter(
+        getEventsByUserId(state, getActiveUserId(state)),
+        state.visibilityFilter
+      ),
   };
 };
 

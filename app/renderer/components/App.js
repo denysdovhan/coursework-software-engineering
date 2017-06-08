@@ -2,40 +2,24 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Redirect,
 } from 'react-router-dom';
-import { Tabs, Tab } from 'material-ui/Tabs';
-import { ActionList, ActionSearch } from 'material-ui/svg-icons';
 
+import PrivateRoute from '../containers/PrivateRoute';
+import PublicRoute from '../containers/PublicRoute';
 import LoginForm from '../containers/LoginForm';
 import SignUpForm from '../containers/SignUpForm';
 import Organizer from './Organizer';
 import Search from './Search';
 
-// @todo: use react-router
-/*const App = () => (
-  <Tabs>
-    <Tab icon={<ActionList />} label="Organizer">
-      <Organizer />
-    </Tab>
-    <Tab icon={<ActionSearch />} label="Search">
-      <Search />
-    </Tab>
-  </Tabs>
-);*/
-
 const App = () => (
   <Router>
     <div>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Sign up</Link>
-      <Link to="/">Organizer</Link>
-      <Link to="/search">Search</Link>
-      <hr />
-      <Route path="/login" component={LoginForm} />
-      <Route path="/signup" component={SignUpForm} />
-      <Route exact path="/" component={Organizer} />
-      <Route path="/search" component={Search} />
+      <PrivateRoute exact path="/" component={Organizer} />
+      <PrivateRoute path="/search" component={Search} />
+      <PublicRoute path="/login" component={LoginForm} />
+      <PublicRoute path="/signup" component={SignUpForm} />
+      <Route path="*" render={() => (<Redirect to="/login" />)} />
     </div>
   </Router>
 );

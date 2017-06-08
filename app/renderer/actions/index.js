@@ -1,6 +1,5 @@
 import { v4 } from 'node-uuid';
-import { getActiveUserID, findUserByUsername, getUser } from '../reducers';
-
+import { getActiveUserId, findUserByUsername, getUser } from '../reducers';
 
 /**
  * actions
@@ -24,9 +23,7 @@ export const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
 
-export const USER_LOGOUT_REQUEST = 'USER_LOGOUT_REQUEST';
-export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
-export const USER_LOGOUT_FAILURE = 'USER_LOGOUT_FAILURE';
+export const USER_LOGOUT = 'USER_LOGOUT';
 
 /**
  * filters
@@ -44,7 +41,8 @@ export const VisibilityFilters = {
 export function addEvent({ name, description, startDate, finishDate }) {
   return (dispatch, getState) => {
     dispatch({
-      user: getActiveUserID(getState()),
+      type: ADD_EVENT,
+      userId: getActiveUserId(getState()),
       id: v4(),
       name,
       description,
@@ -161,9 +159,9 @@ export function userLogIn(username, password) {
   };
 }
 
-// export function userLogOut(username) {
-//   return {
-//     type: USER_LOGOUT,
-//     username,
-//   };
-// }
+export function userLogOut() {
+  console.log('userLogOut');
+  return {
+    type: USER_LOGOUT,
+  };
+}

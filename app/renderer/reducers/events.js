@@ -3,7 +3,14 @@ import {
   UPDATE_EVENT,
   TOGGLE_EVENT,
   REMOVE_EVENT,
+  VisibilityFilters,
 } from '../actions';
+
+const {
+  SHOW_ALL,
+  SHOW_ACTIVE,
+  SHOW_COMPLETED,
+} = VisibilityFilters;
 
 /**
  * Events reducer
@@ -11,11 +18,12 @@ import {
  * @param {object} action A Redux action
  * @return {array}
  */
-function events(state = [], action) {
+export default function events(state = [], action) {
   switch (action.type) {
     case ADD_EVENT:
       return [{
-        id: action.data,
+        userId: action.userId,
+        id: action.id,
         name: action.name,
         description: action.description,
         startDate: action.startDate,
@@ -24,7 +32,7 @@ function events(state = [], action) {
       }, ...state];
     case UPDATE_EVENT:
       return state.map(event =>
-        event.id === action.id ? {...event, ...action.updated } : event
+        event.id === action.id ? { ...event, ...action.updated } : event
       );
     case REMOVE_EVENT:
       return state.filter(event => event.id !== action.id);
@@ -37,4 +45,19 @@ function events(state = [], action) {
   }
 }
 
-export default events;
+export function getEventsByFilter(state, filter) {
+  switch (filter) {
+    case SHOW_ALL:
+      return state;
+    case SHOW_ACTIVE:
+      return state.filter(event => !event.completed);
+    case SHOW_COMPLETED:
+      return state.filter(event => event.completed);
+    default:
+      return state;
+  }
+}
+
+export function getEventsByUserId(state, userId) {
+  return state.filter(event => event.userId === userId);
+}
