@@ -15,12 +15,16 @@ function events(state = [], action) {
   switch (action.type) {
     case ADD_EVENT:
       return [{
-        ...action.data,
+        id: action.data,
+        name: action.name,
+        description: action.description,
+        startDate: action.startDate,
+        finishDate: action.finishDate,
         completed: false,
       }, ...state];
     case UPDATE_EVENT:
       return state.map(event =>
-        event.id === action.id ? { ...event, ...action.updated } : event
+        event.id === action.id ? {...event, ...action.updated } : event
       );
     case REMOVE_EVENT:
       return state.filter(event => event.id !== action.id);

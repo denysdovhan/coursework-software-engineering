@@ -51,12 +51,22 @@ class Login extends React.Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
-    if (!this.state.loginInputValue.trim()) {
+
+    const {
+      loginInputValue,
+      passwordInputValue
+    } = this.state;
+
+    if (!loginInputValue.trim()) {
       this.setState({ loginInputError: 'Login is required!' });
+      return;
     }
-    if (!this.state.passwordInputValue.trim()) {
+    if (!passwordInputValue.trim()) {
       this.setState({ passwordInputError: 'Password is required!' });
+      return;
     }
+
+    this.props.processUserLogIn(loginInputValue, passwordInputValue);
   }
 
   render() {

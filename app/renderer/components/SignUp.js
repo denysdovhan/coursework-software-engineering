@@ -69,13 +69,18 @@ class Login extends React.Component {
 
     if (!loginValue.trim()) {
       this.setState({ loginError: 'Login is required!' });
+      return;
     }
     if (!passwordValue.trim()) {
       this.setState({ passwordError: 'Password is required!' });
+      return;
     }
     if (!repeatPasswordValue.trim() || repeatPasswordValue.trim() !== passwordValue.trim()) {
       this.setState({ repeatPasswordError: 'Passwords are not equal!' });
+      return;
     }
+
+    this.props.processUserSignUp(loginValue, passwordValue);
   }
 
   render() {

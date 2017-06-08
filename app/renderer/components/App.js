@@ -7,8 +7,8 @@ import {
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { ActionList, ActionSearch } from 'material-ui/svg-icons';
 
-import Login from './Login';
-import SignUp from './SignUp';
+import LoginForm from '../containers/LoginForm';
+import SignUpForm from '../containers/SignUpForm';
 import Organizer from './Organizer';
 import Search from './Search';
 
@@ -32,8 +32,8 @@ const App = () => (
       <Link to="/">Organizer</Link>
       <Link to="/search">Search</Link>
       <hr />
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={SignUp} />
+      <Route path="/login" component={LoginForm} />
+      <Route path="/signup" component={SignUpForm} />
       <Route exact path="/" component={Organizer} />
       <Route path="/search" component={Search} />
     </div>

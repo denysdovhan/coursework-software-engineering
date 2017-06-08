@@ -1,4 +1,6 @@
 import { v4 } from 'node-uuid';
+import { getActiveUserID, findUserByUsername, getUser } from '../reducers';
+
 
 /**
  * actions
@@ -14,6 +16,18 @@ export const FETCH_COMPANIES_FAILURE = 'FETCH_COMPANIES_FAILURE';
 
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
+export const USER_SIGNUP_REQUEST = 'USER_SIGNUP_REQUEST';
+export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
+export const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
+
+export const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
+export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
+export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
+
+export const USER_LOGOUT_REQUEST = 'USER_LOGOUT_REQUEST';
+export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
+export const USER_LOGOUT_FAILURE = 'USER_LOGOUT_FAILURE';
+
 /**
  * filters
  */
@@ -28,15 +42,15 @@ export const VisibilityFilters = {
  */
 
 export function addEvent({ name, description, startDate, finishDate }) {
-  return {
-    type: ADD_EVENT,
-    data: {
+  return (dispatch, getState) => {
+    dispatch({
+      user: getActiveUserID(getState()),
       id: v4(),
       name,
       description,
       startDate,
       finishDate,
-    }
+    });
   };
 }
 
@@ -86,8 +100,70 @@ export function fetchCompanies(officialName) {
         companies,
       }))
       .catch(error => dispatch({
-        type: 'FETCH_COMPANIES_FAILURE',
+        type: FETCH_COMPANIES_FAILURE,
         error,
       }));
   };
 }
+
+export function userSignUp(username, password) {
+  return (dispatch, getState) => {
+    dispatch({
+      type: USER_LOGIN_REQUEST,
+      username,
+      password,
+    });
+
+    if (findUserByUsername(getState(), username)) {
+      dispatch({
+        type: USER_SIGNUP_FAILURE,
+        error: new Error('User is already exists'),
+      });
+    } else {
+      dispatch({
+        type: USER_SIGNUP_SUCCESS,
+        id: v4(),
+        username,
+        password,
+      });
+    }
+  };
+}
+
+export function userLogIn(username, password) {
+  return (dispatch, getState) => {
+    dispatch({
+      type: USER_LOGIN_REQUEST,
+      username,
+      password,
+    });
+
+    if (!findUserByUsername(getState(), username)) {
+      return dispatch({
+        type: USER_LOGIN_FAILURE,
+        error: new Error('User does not exists!'),
+      });
+    }
+
+    const activeUser = getUser(getState(), username, password);
+
+    if (activeUser) {
+      return dispatch({
+        type: USER_LOGIN_SUCCESS,
+        ...activeUser,
+      });
+    }
+
+    return dispatch({
+      type: USER_LOGIN_FAILURE,
+      error: new Error('Password is wrong!'),
+    });
+  };
+}
+
+// export function userLogOut(username) {
+//   return {
+//     type: USER_LOGOUT,
+//     username,
+//   };
+// }
