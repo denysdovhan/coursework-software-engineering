@@ -9,9 +9,15 @@ import ToggleMenu from './ToggleMenu';
 import { userLogOut } from '../actions';
 import { isActiveUser } from '../reducers';
 
+const styles = {
+  position: 'fixed',
+  top: 0
+};
+
 const AppHeader = ({ title, username, handleUserLogOut }) => (
   // @todo: add position: fixed
   <AppBar
+    style={styles}
     title={`${title} (${username})`}
     iconElementLeft={<ToggleMenu />}
     iconElementRight={

@@ -18,7 +18,8 @@ import CompaniesIcon from 'material-ui/svg-icons/social/people';
 const styles = {
   maxWidth: '600px',
   width: '90%',
-  margin: '1rem auto'
+  margin: '1rem auto',
+  marginTop: '80px',
 };
 
 class Search extends React.Component {

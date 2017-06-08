@@ -7,7 +7,8 @@ import AppHeader from './AppHeader';
 const styles = {
   maxWidth: '600px',
   width: '90%',
-  margin: '1rem auto'
+  margin: '1rem auto',
+  marginTop: '80px',
 };
 
 const Organizer = () => (
