@@ -25,6 +25,8 @@ export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 
+export const HIDE_ERROR = 'HIDE_ERROR';
+
 /**
  * filters
  */
@@ -162,5 +164,11 @@ export function userLogIn(username, password) {
 export function userLogOut() {
   return {
     type: USER_LOGOUT,
+  };
+}
+
+export function hideError() {
+  return {
+    type: HIDE_ERROR,
   };
 }

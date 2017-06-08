@@ -6,6 +6,7 @@ import events, * as fromEvents from './events';
 import users, * as fromUsers from './users';
 import companies from './companies';
 import isFetching from './isFetching';
+import error from './error';
 
 // @todo: make state more database-like
 
@@ -19,6 +20,7 @@ export default combineReducers({
   users,
   companies,
   isFetching,
+  error,
 });
 
 /**

@@ -11,6 +11,7 @@ import LoginForm from '../containers/LoginForm';
 import SignUpForm from '../containers/SignUpForm';
 import Organizer from './Organizer';
 import Search from './Search';
+import ErrorSnackbar from '../containers/ErrorSnackbar';
 
 const App = () => (
   <Router>
@@ -20,6 +21,7 @@ const App = () => (
       <PublicRoute path="/login" component={LoginForm} />
       <PublicRoute path="/signup" component={SignUpForm} />
       <Route path="/build/index.html" render={() => (<Redirect to="/login" />)} />
+      <ErrorSnackbar />
     </div>
   </Router>
 );
