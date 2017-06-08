@@ -22,7 +22,7 @@
     "build-main": "cross-env BABEL_ENV=electron-build webpack --env.platform=electron --env.prod",
     "build-renderer": "cross-env BABEL_ENV=build webpack --env.prod",
     "package": "node tasks/package",
-    "package-all": "run-s package -- --all"
+    "package-all": "npm run package -- --all"
   },
   "repository": {
     "type": "git",
