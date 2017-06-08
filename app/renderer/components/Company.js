@@ -23,11 +23,11 @@ const Company = ({
       <CardTitle actAsExpander showExpandableButton title={name || officialName} subtitle={edrpou} />
       <CardText expandable>
         <List>
-          <ListItem disabled primaryText={status} leftIcon={<StatusIcon />} />
-          <ListItem disabled primaryText={moment(createdAt).format('MMMM Do YYYY, h:mm:ss')} leftIcon={<CreatedAtIcon />} />
-          <ListItem disabled primaryText={address} leftIcon={<LocationIcon />} />
-          <ListItem disabled primaryText={mainPerson} leftIcon={<PersonIcon />} />
-          <ListItem disabled primaryText={occupation} leftIcon={<OccupationIcon />} />
+          {status && <ListItem disabled primaryText={status} leftIcon={<StatusIcon />} />}
+          {createdAt && <ListItem disabled primaryText={moment(createdAt).format('MMMM Do YYYY, h:mm:ss')} leftIcon={<CreatedAtIcon />} />}
+          {address && <ListItem disabled primaryText={address} leftIcon={<LocationIcon />} />}
+          {mainPerson && <ListItem disabled primaryText={mainPerson} leftIcon={<PersonIcon />} />}
+          {occupation && <ListItem disabled primaryText={occupation} leftIcon={<OccupationIcon />} />}
         </List>
       </CardText>
     </Card>
