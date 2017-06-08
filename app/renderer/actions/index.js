@@ -160,7 +160,6 @@ export function userLogIn(username, password) {
 }
 
 export function userLogOut() {
-  console.log('userLogOut');
   return {
     type: USER_LOGOUT,
   };
