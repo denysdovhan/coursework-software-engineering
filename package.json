@@ -4,7 +4,7 @@
   "description": "Electron + webpack + Babel + React",
   "main": "build",
   "electron": {
-    "name": "coursework-software-engineering"
+    "name": "Organizer"
   },
   "scripts": {
     "start": "run-s dev",
